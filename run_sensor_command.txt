@@ -1,0 +1,4 @@
+cd D:\mukesh\learning\deepak\
+venv\ve_sensor_pca\Scripts\activate
+cd D:\mukesh\learning\deepak\SensorData
+python run.py

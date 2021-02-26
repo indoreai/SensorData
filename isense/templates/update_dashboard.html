@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+{% block content %}
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-12">
+                    <legend class="border-bottom mb-4">Edit Sample</legend>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form.device_name.label(class="form-control-label") }}
+
+                        {% if form.device_name.errors %}
+                            {{ form.device_name(class="form-control form-control-md font_size is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.device_name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.device_name(class="form-control form-control-md font_size device_disabled ") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form.sample_set_id.label(class="form-control-label") }}
+                        {% if form.sample_set_id.errors %}
+                            {{ form.sample_set_id(class="form-control form-control-md font_size is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.sample_set_id.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.sample_set_id(class="form-control form-control-md font_size sample_disabled") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form.name.label(class="form-control-label") }}
+                        {% if form.name.errors %}
+                            {{ form.name(class="form-control form-control-md font_size is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.name(class="form-control font_size form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form.type.label(class="form-control-label") }}
+                        {% if form.type.errors %}
+                            {{ form.type(class="form-control font_size form-control-md is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.type.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.type(class="form-control font_size form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form.address.label(class="form-control-label") }}
+                        {% if form.address.errors %}
+                            {{ form.address(class="form-control form-control-md font_size textarea_dashboard is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.address.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.address(class="form-control font_size textarea_dashboard form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form.notes.label(class="form-control-label") }}
+                        {% if form.notes.errors %}
+                            {{ form.notes(class="form-control form-control-md font_size textarea_dashboard is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.notes.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.notes(class="form-control font_size textarea_dashboard form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group" style="width:240px;">
+                      <label for="sample_date">Sample Date</label>
+                         <input type="datetime-local" class="form-control font_size" id="sample_date" name="sample_date" value="">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Sample File</label>
+                        <div>
+                          <P class="font_size" style="margin-top:10px;">No. of Record: {{ no_of_record }}</P>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ form.file.label() }}
+                        {{ form.file(class="form-control-file") }}
+                        {% if form.file.errors %}
+                            {% for error in form.file.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                        {% if download_docs %}
+                        <a href="{{ url_for('pca.download_file', filename=download_docs) }} ">{{ download_docs }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            <div class="col-md-3">
+                    {{ form.submit(class="btn btn-outline-info btn_upload") }}
+                </div>
+            </div>
+        </form>
+
+ <script type="text/javascript">
+
+    function date_to_str(d){
+        //var d = new Date();
+        return d.getFullYear() +"-"+String(d.getMonth()+1).padStart(2, '0')
+            +"-"+String(d.getDate()).padStart(2, '0')+"T"+
+            String(d.getHours()).padStart(2, '0') +":"+
+            String(d.getMinutes()).padStart(2, '0')
+    }
+
+
+    $( document ).ready(function() {
+        var d= new Date('{{sample_date}}')
+        $('#sample_date').val(date_to_str(d))
+        $('.device_disabled').attr("readonly",true)
+        $('.sample_disabled').attr("readonly",true)
+    });
+ </script>
+
+{% endblock content %}

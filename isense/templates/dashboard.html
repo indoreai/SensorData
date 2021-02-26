@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+{% block content %}
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-12">
+                    <legend class="border-bottom mb-4">Upload Sample</legend>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{ form.device_name.label(class="form-control-label") }}
+
+                        {% if form.device_name.errors %}
+                            {{ form.device_name(class="form-control font_size form-control-md is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.device_name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.device_name(class="form-control font_size form-control-md ") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{ form.sample_set_id.label(class="form-control-label") }}
+                        {% if form.sample_set_id.errors %}
+                            {{ form.sample_set_id(class="form-control font_size form-control-md is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.sample_set_id.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.sample_set_id(class="form-control font_size form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{ form.name.label(class="form-control-label") }}
+                        {% if form.name.errors %}
+                            {{ form.name(class="form-control form-control-md font_size is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.name(class="form-control form-control-md font_size") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{ form.type.label(class="form-control-label") }}
+                        {% if form.type.errors %}
+                            {{ form.type(class="form-control form-control-md font_size is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.type.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.type(class="form-control font_size form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group" style="width:240px;">
+                      <label for="sample_date">Sample Date</label>
+                         <input type="datetime-local" class="form-control font_size" id="sample_date" name="sample_date" value="">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{ form.address.label(class="form-control-label") }}
+                        {% if form.address.errors %}
+                            {{ form.address(class="form-control form-control-md font_size textarea_dashboard is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.address.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.address(class="form-control form-control-md font_size textarea_dashboard") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{ form.notes.label(class="form-control-label") }}
+                        {% if form.notes.errors %}
+                            {{ form.notes(class="form-control form-control-md font_size textarea_dashboard is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.notes.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.notes(class="form-control font_size textarea_dashboard form-control-md") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ form.file.label() }}
+                        {{ form.file(class="form-control-file") }}
+                        {% if form.file.errors %}
+                            {% for error in form.file.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ form.support_file.label() }}
+                        {{ form.support_file(class="form-control-file") }}
+                        {% if form.support_file.errors %}
+                            {% for error in form.support_file.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    {{ form.submit(class="btn btn-outline-info  btn_upload") }}
+                </div>
+            </div>
+        </form>
+
+{% if samples_meta_data.items %}
+<div class="" >
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Device Name</th>
+      <th scope="col">Sample Set</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Sample Date</th>
+       <th scope="col">No. of Record</th>
+        <th scope="col">Action</th>
+        <th scope="col">Supported Documents</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sample_data in samples_meta_data.items %}
+    <tr>
+        <td>{{sample_data.device_name}}</td>
+        <td>{{sample_data.sample_set_id}}</td>
+        <td>{{sample_data.name}}</td>
+        <td>{{sample_data.type}}</td>
+        <td>{{sample_data.sample_date}}</td>
+        <td>{{sample_data.no_of_record}}</td>
+        <td><a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('pca.edit_sample', meta_id=sample_data.id) }}">
+            Edit</a></td>
+        <td style="color:#0099CC;">{% if sample_data.additional_docs %}
+            <a href="{{ url_for('pca.download_file', filename=sample_data.additional_docs) }}">{{ sample_data.additional_docs }} {% endif %}</a>
+            </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+    {% for page_num in samples_meta_data.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if samples_meta_data.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('pca.dashboard', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('pca.dashboard', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+{% endif %}
+
+ <script type="text/javascript">
+
+    function date_to_str(){
+        var d = new Date();
+        return d.getFullYear() +"-"+String(d.getMonth()+1).padStart(2, '0')
+            +"-"+String(d.getDate()).padStart(2, '0')+"T"+
+            String(d.getHours()).padStart(2, '0') +":"+
+            String(d.getMinutes()).padStart(2, '0')
+    }
+
+
+    $( document ).ready(function() {
+        $('#sample_date').val(date_to_str())
+    });
+ </script>
+
+
+{% endblock content %}

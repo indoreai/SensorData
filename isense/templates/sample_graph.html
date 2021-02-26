@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+
+        <div class="row">
+              <div class="col-md-12">
+                    <legend class="border-bottom mb-4">Sample Graph</legend>
+                </div>
+                <input type="hidden" class="userId" id="userId" value= "{{ user_id }}"/>
+            <div class="col-md-3">
+                <div class="form-group">
+                <label for="device_id">Select Device Name</label>
+                    <select  class="form-control device_id" id="device_id" required>
+                        <option value="">Select one</option>
+                        {% for device_name in samples_user_devices %}
+                            <option value="{{ device_name.device_name }}">{{ device_name.device_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                <label for="sample_id">Select Sample Set </label>
+                    <select class="selectpicker form-control sample_id" id="sample_id">
+                        <option value="">Select one</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                <label for="senser_id">Select Sensor </label>
+                    <select  class="form-control senser_id" id="senser_id" required>
+                        <option value="">Select one</option>
+                        <option value="TempBME680">Temp(BME680)</option>
+                        <option value="PresureBME680">Presure(BME680)</option>
+                        <option value="HRBME680">H.R.(BME680)</option>
+                        <option value="RBME680">R(BME680)</option>
+                        <option value="CO2SGP30">CO2(SGP30)</option>
+                        <option value="TVOCSGP30">TVOC(SGP30)</option>
+                        <option value="H2SGP30">H2(SGP30)</option>
+                        <option value="EtanolSGP30">Etanol(SGP30)</option>
+                        <option value="CO2CCS811">CO2(CCS811)</option>
+                        <option value="TVOCCCS811">TVOC(CCS811)</option>
+                        <option value="ResohmCCS811">Res(ohm)(CCS811)</option>
+                        <option value="CO2iAQ">CO2(iAQ)</option>
+                        <option value="TVOCiAQ">TVOC(iAQ)</option>
+                        <option value="RiAQCore">R(iAQ-Core)</option>
+                        <option value="AireMuestra">Aire/Muestra</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <button type="button" class="btn btn-primary" id="sample_graph"
+                        style="margin-top:12%;width: 150px;border-radius: 25px; background:#17a2b8;">Submit</button>
+            </div>
+            <div class="col-md-12 ">
+                    <div id="chart_div" style="width: 900px; height: 500px"></div>
+            </div>
+        </div>
+    </div>
+
+<div class= "row">
+  <div class="container">
+    <!--<canvas id="myChart" width="400" height="200"></canvas>-->
+<!--    <div id="chart_div" style="width: 900px; height: 500px"></div>-->
+
+    <br>
+    <div id="" style="width: 700px; height: 500px; display:none;"></div>
+  </div>
+{% endblock content %}
+

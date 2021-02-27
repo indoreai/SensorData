@@ -18,11 +18,12 @@ class Config:
             print("quiting the code")
             exit()
     else:
-       with open('isense/production.json') as f:
+       with open('indoreai/production.json') as f:
             prod_setting = json.load(f)
             SECRET_KEY=prod_setting.get('SECRET_KEY')
             SQLALCHEMY_DATABASE_URI=prod_setting.get('SQLALCHEMY_DATABASE_URI')
 
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
     MAIL_SERVER = 'smtp.google.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True

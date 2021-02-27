@@ -130,7 +130,6 @@ dmypy.json
 
 #.idea
 .idea/
-*.csv
 
 # additional_docs
 additional_docs/

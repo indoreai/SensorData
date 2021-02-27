@@ -1,6 +1,6 @@
 from flask import url_for, current_app
 from flask_mail import Message
-from isense import mail
+from indoreai import mail
 
 
 def send_reset_email(user):

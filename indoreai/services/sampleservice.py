@@ -3,9 +3,9 @@ Created on Feb 06th, 2020
 
 @author: rajesh
 """
-from isense import db
-from isense.pca.models import Samples, Samples_meta, Samples_userdevices
-from isense.utils import model_to_python, model_list_to_python
+from indoreai import db
+from indoreai.pca.models import Samples, Samples_meta, Samples_userdevices
+from indoreai.utils import model_to_python, model_list_to_python
 from sqlalchemy import and_
 
 

@@ -16,11 +16,11 @@ from flask.helpers import url_for, flash, send_from_directory
 from flask.templating import render_template
 from werkzeug.utils import redirect
 
-from isense import db
+from indoreai import db
 from flask_login import current_user, login_required
-from isense.pca.forms import UploadForm, Update_dashboard
-from isense.pca.models import Samples, Samples_meta, Samples_userdevices
-from isense.services.sampleservice import sample_mata_get_data_first_service
+from indoreai.pca.forms import UploadForm, Update_dashboard
+from indoreai.pca.models import Samples, Samples_meta, Samples_userdevices
+from indoreai.services.sampleservice import sample_mata_get_data_first_service
 from datetime import datetime
 
 pca = Blueprint('pca', __name__)
@@ -124,11 +124,10 @@ def dashboard():
 
         samples_meta_data = {"user_id": user_id, "device_name": form.device_name.data,
                              "sample_set_id": form.sample_set_id.data, "name": form.name.data,
-                             "sample_date": datetime_str, "type": form.type.data,
-                             "address": form.address.data, "start_sample_id": start_sample_id,
-                             "notes": form.notes.data, "end_sample_id": end_sample_id,
-                             "filename": form.file.data.filename, "s3_path": s3_path, "no_of_record": count,
-                             "additional_docs": filename}
+                             "sample_date": datetime_str,  "start_sample_id": start_sample_id,
+                              "end_sample_id": end_sample_id,
+                             "filename": form.file.data.filename,  "no_of_record": count
+                             }
 
         sample_meta = Samples_meta(**samples_meta_data)
         db.session.add(sample_meta)

@@ -6,11 +6,11 @@ Created on Feb 06th, 2020
 
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
-from isense import db, bcrypt
+from indoreai import db, bcrypt
 
-from isense.users.forms import (RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm)
-from isense.users.models import User
-from isense.users.utils import send_reset_email
+from indoreai.users.forms import (RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm)
+from indoreai.users.models import User
+from indoreai.users.utils import send_reset_email
 
 users = Blueprint('users', __name__)
 

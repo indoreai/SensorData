@@ -1,4 +1,4 @@
-from isense import create_app
+from indoreai import create_app
 
 app = create_app()
 

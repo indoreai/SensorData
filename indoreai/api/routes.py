@@ -8,8 +8,8 @@ import os
 from datetime import datetime
 from flask import (render_template, url_for, flash,
                    redirect, request, Response, jsonify, abort, Blueprint, current_app)
-from isense.services.sampleservice import sample_mata_get_data_service, common_get_data_service
-from isense.services.pcaservice import get_pca_feature_data_local
+from indoreai.services.sampleservice import sample_mata_get_data_service, common_get_data_service
+from indoreai.services.pcaservice import get_pca_feature_data_local
 import numpy as np
 
 

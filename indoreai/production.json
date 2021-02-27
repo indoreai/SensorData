@@ -1,5 +1,5 @@
 {
     "SECRET_KEY": "0a6d8cde001278802a761b55c42c949b",
-    "SQLALCHEMY_DATABASE_URI":"sqlite:///LED_Monitoring",
+    "SQLALCHEMY_DATABASE_URI":"sqlite:///Sensor_data_db",
     "USE_SAGEMAKER":0
 }

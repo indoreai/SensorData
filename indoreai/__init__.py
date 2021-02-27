@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
-from isense.config import Config
+from indoreai.config import Config
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -21,15 +21,15 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
     with app.app_context():
-        from isense.users.models import User
-        from isense.pca.models import Samples, Samples_meta, Samples_userdevices
+        from indoreai.users.models import User
+        from indoreai.pca.models import Samples, Samples_meta, Samples_userdevices
         # from models import Device, Camera, ROI, EmailAddress, ROI2MailRel, AuditLog, ROI2MailRel
         db.create_all()  # Creat.
 
-    from isense.users.routes import users
-    from isense.api.routes import api
-    from isense.pca.routes import pca
-    from isense.errors.handlers import errors
+    from indoreai.users.routes import users
+    from indoreai.api.routes import api
+    from indoreai.pca.routes import pca
+    from indoreai.errors.handlers import errors
     app.register_blueprint(users)
     app.register_blueprint(api)
     app.register_blueprint(pca)

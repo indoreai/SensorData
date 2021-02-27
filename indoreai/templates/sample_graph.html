@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<div class="container-fluid">
         <div class="row">
-              <div class="col-md-12">
+                <div class="col-md-12">
                     <legend class="border-bottom mb-4">Sample Graph</legend>
                 </div>
                 <input type="hidden" class="userId" id="userId" value= "{{ user_id }}"/>
@@ -39,23 +40,26 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-3 ">
+            <div class="col-md-2 ">
                 <button type="button" class="btn btn-primary" id="sample_graph"
-                        style="margin-top:12%;width: 150px;border-radius: 25px; background:#17a2b8;">Submit</button>
-            </div>
-            <div class="col-md-12 ">
-                    <div id="chart_div" style="width: 900px; height: 500px"></div>
+                        style="margin-top:31px;width: 150px;border-radius: 25px; background:#17a2b8;line-height: 10px; height: 30px;">Submit</button>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12 ">
+              
+                    <div id="chart_div"></div>
+            </div>
+        </div>
+ </div>
 
 <div class= "row">
-  <div class="container">
     <!--<canvas id="myChart" width="400" height="200"></canvas>-->
 <!--    <div id="chart_div" style="width: 900px; height: 500px"></div>-->
 
     <br>
-    <div id="" style="width: 700px; height: 500px; display:none;"></div>
+    <div id="" style="width: 700px; height: 500px;"></div>
   </div>
+  
 {% endblock content %}
 

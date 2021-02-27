@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<div class="container-fluid">
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="row">
@@ -54,15 +54,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                  <div class="form-group" style="width:240px;">
+                <div class="col-md-2">
+                  <div class="form-group">
                       <label for="sample_date">Sample Date</label>
                          <input type="datetime-local" class="form-control font_size" id="sample_date" name="sample_date" value="">
                     </div>
                 </div>
 
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         {{ form.file.label() }}
                         {{ form.file(class="form-control-file") }}
@@ -81,7 +81,7 @@
         </form>
 
 {% if samples_meta_data.items %}
-<div class="" >
+<div class="dashboard-table" >
     <table class="table">
   <thead>
     <tr>
@@ -103,7 +103,7 @@
 
         <td>{{sample_data.sample_date}}</td>
         <td>{{sample_data.no_of_record}}</td>
-        <td><a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('pca.edit_sample', meta_id=sample_data.id) }}">
+        <td><a class="" href="{{ url_for('pca.edit_sample', meta_id=sample_data.id) }}">
             Edit</a></td>
 
     </tr>
@@ -111,17 +111,19 @@
   </tbody>
 </table>
 </div>
-    {% for page_num in samples_meta_data.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-      {% if page_num %}
-        {% if samples_meta_data.page == page_num %}
-          <a class="btn btn-info mb-4" href="{{ url_for('pca.dashboard', page=page_num) }}">{{ page_num }}</a>
-        {% else %}
-          <a class="btn btn-outline-info mb-4" href="{{ url_for('pca.dashboard', page=page_num) }}">{{ page_num }}</a>
-        {% endif %}
-      {% else %}
-        ...
-      {% endif %}
-    {% endfor %}
+{% for page_num in samples_meta_data.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+  {% if samples_meta_data.page == page_num %}
+    <a class="btn btn-info mb-4" href="{{ url_for('pca.dashboard', page=page_num) }}">{{ page_num }}</a>
+  {% else %}
+    <a class="btn btn-outline-info mb-4" href="{{ url_for('pca.dashboard', page=page_num) }}">{{ page_num }}</a>
+  {% endif %}
+{% else %}
+  ...
+{% endif %}
+{% endfor %}
+</div>
+   
 {% endif %}
 
  <script type="text/javascript">

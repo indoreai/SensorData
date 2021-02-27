@@ -20,9 +20,9 @@
 
 
     {% if title %}
-        <title>I-SENSE-PCA - {{ title }}</title>
+        <title>Sensor Data Analysis - {{ title }}</title>
     {% else %}
-        <title>I-SENSE-PCA</title>
+        <title>Sensor Data Analysis</title>
     {% endif %}
 </head>
 <body>
@@ -31,7 +31,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel">
         <div class="container-fluid">
-          <a class="navbar-brand mr-4" href="/">I-SENSE-PCA</a>
+          <a class="navbar-brand mr-4" href="/">Sensor Data Analysis</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -39,6 +39,7 @@
               <div class="navbar-nav mr-auto">
                    {% if current_user.is_authenticated %}
                     <a class="nav-item nav-link" href="{{ url_for('pca.dashboard') }}">Home</a>
+                    <a class="nav-item nav-link" href="{{ url_for('pca.about') }}">About</a>
                     <a class="nav-item nav-link" href="{{ url_for('pca.sample_graph') }}">Sample Graph</a>
                     <a class="nav-item nav-link" href="{{ url_for('pca.pca_graph') }}">PCA Graph</a>
                   {% endif %}

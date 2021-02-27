@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                     <legend class="border-bottom mb-4">PCA Graph</legend>
@@ -41,16 +41,17 @@
           </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-primary pca_graph" id="pca_graph"
-                        style="margin-top:12%;width:150px;border-radius: 25px; background:#17a2b8;">Submit</button>
+                        style="margin-top:32px;width:150px;border-radius: 25px; background:#17a2b8; height: 30px; line-height: 10px;">Submit</button>
               </div>
             <div class="col-md-12 back_color">
                 <style>div.google-visualization-tooltip { font-weight: bold; }</style>
-                <div id="chart_div_pca" style="width: 800px; height: 400px"></div>
+                <div id="chart_div_pca" style="width:calc(100% - 200px); height: 400px"></div>
                 <div id="legend" class="legendUI">
                     <ul class="legend_list">
                     </ul>
                 </div>
           </div>
-
+</div>
+</div>
 {% endblock content %}
 

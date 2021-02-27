@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid">
+<legend class="border-bottom mb-4">About</legend>
+<p>
+    The Tool is used to analyze data fetched from Sensors. A Device consists of multiple sensors, each measure a specific environment attribute. In our case, we have 5 sensor device which sends 1 records per second in the below format.
+</p>
+
+<table>
+    <tr>
+        <th>Sample</th>
+        <th>HRBME680</th>
+        <th>RBME680</th>
+        <th>CO2SGP30</th>
+        <th>TVOCSGP30</th>
+        <th>H2SGP30</th>
+        <th>EtanolSGP30</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>7</td>
+        <td>1183290366</td>
+        <td>400</td>
+        <td>0</td>
+        <td>14300</td>
+        <td>19029</td>
+    
+    </tr>
+</table>
+<br>
+<p>
+    We have Deviсе which collect data in regular time interval at different locations. The set of data is called Sample. Generally, A Sample collection time is 10 to 20 minutes.
+</p>
+
+<ul>
+    <li>The data is Uploaded to the System using CSV.</li>
+    <li>General Graph plots data of each Sample on per second frequency.</li>
+    <li>PCA is the ML algorithm used to reduce dimension.</li>
+    <li>Suppose we want to plot the data per minute then we have to reduce it to two-dimension from 60.</li>
+    <li>We have done the exact same thing using the skill-learn python library and plot the data.</li>
+    <li>We can apply PCA to multiple Samples and used it for clustering and separation</li>
+</ul>
+<div class="technologies">
+    <h3>Technologies</h3>
+    <p><span>Back End:</span> python, Flask, SQLAlchemy, Scikit-learn, Gunicorn</p>
+	<p><span>Front End:</span> HTML5,CSS3,Bootstrap,Google Plot</p>
+	<p><span>Hosting:</span>AWS EC2</p>
+</div>
+</div>
+{% endblock content %}

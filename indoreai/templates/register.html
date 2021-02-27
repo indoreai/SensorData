@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 sensor-img"><img src="{{ url_for('static', filename='images/sensor.png') }}" /> </div>
+        <div class="col-md-6">
     <div class="content-section register-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
@@ -69,4 +73,6 @@
             Already Have An Account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
         </small>
     </div>
+</div>
+</div></div>
 {% endblock content %}

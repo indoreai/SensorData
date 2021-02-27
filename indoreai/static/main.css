@@ -17,11 +17,19 @@ width: 600px; height: 600px; background: #cdd4db; z-index: -1;}
 
 #main{height: calc(100vh - 162px);
   overflow: auto; margin: 20px 0;}
-.form-control-label{margin-bottom: 0 !important;}
-input[type=text], input[type=password], select {width: 100%; padding: 4px 10px; margin: 8px 0; display: inline-block; border: 1px solid #ccc;
-    border-radius: 4px; box-sizing: border-box;  font-size:1rem; }
-.form-group{margin-bottom: 0 !important;}
+.form-control-label, label{margin-bottom: 0 !important;}
+input[type=text], input[type=password], select, input[type=datetime-local], .dropdown-toggle {width: 100%; padding: 0px 10px !important; margin: 8px 0; display: inline-block; border: 1px solid #ccc;
+    border-radius: 4px; box-sizing: border-box;  font-size:1rem; height: 30px !important;}
 
+input[type=file]{margin-top: 8px;}
+
+
+
+
+.form-group{margin-bottom: 0 !important;}
+.dropdown-toggle{margin: 0 !important;}
+legend{font-size: 1.1rem !important ;}
+.sample_id{margin: 8px 0;}
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
@@ -150,9 +158,10 @@ a.article-title:hover {
 }
 
 .btn_upload{
-    margin-top: 12%;
+    margin-top: 31px; line-height: 10px;
     width: 150px;
     border-radius: 25px;
+    height: 30px;
 }
 
 .legendUI{
@@ -185,3 +194,14 @@ a.article-title:hover {
 ::-webkit-scrollbar {width: 0.5rem;}
 ::-webkit-scrollbar-track {background: #d4dee9;}
 ::-webkit-scrollbar-thumb {background-color: #8097ad;outline: 1px solid #6994be;}
+table{width: 100%; border: solid 1px #ddd; }
+table th, table td{padding: 5px 10px !important;border-right: solid 1px #ddd; text-align: center; font-size: 14px;}
+table th{background: #f3f3f3; border-bottom: solid 1px #ddd;}
+h3{font-size: 18px;}
+.technologies p{margin-bottom: 5px;}
+.dashboard-table{margin-top: 15px;}
+.dashboard-table thead th{border-bottom:1px !important;}
+
+#chart_div{margin-top: 20px;}
+#chart_div svg{width: 100% !important;}
+.sensor-img img{max-width: 100%;}

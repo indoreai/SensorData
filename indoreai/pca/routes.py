@@ -221,3 +221,8 @@ def edit_sample(meta_id):
 def download_file(filename):
     path = os.path.join(current_app.root_path, 'additional_docs/')
     return send_from_directory(path, filename, as_attachment=True)
+
+
+@pca.route('/about')
+def about():
+     return render_template('about.html')
